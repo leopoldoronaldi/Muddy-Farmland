@@ -1,110 +1,40 @@
-# Muddy Farmland
+<p align="center">
+  <a href="https://modrinth.com/mod/muddy-farmland">
+    <img src="https://i.ibb.co/MDnM4C3s/Chat-GPT-Image-23-Juli-2026-15-46-39-1.png" width="225px" alt="Modrinth Button">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.curseforge.com/minecraft/mc-mods/muddy-farmland">
+    <img src="https://plain-weur-prod-public.komododecks.com/202607/23/VeSAptUuVWINmHI6C6eH/image.png" width="225px" alt="CurseForge Button">
+  </a>
+</p>
 
-Muddy Farmland is a Fabric mod that adds a water-storing, crop-supporting
-farmland block made from mud. The block ID is
-`muddy-farmland:muddy_farmland`.
+<br>
 
-## Features
+<img src="https://cdn.phototourl.com/free/2026-07-23-5b6f0697-33d5-4002-800e-a6e64c433092.png" width="100px" alt="About Section Header">
 
-- Adds Muddy Farmland to the Natural Blocks creative tab. It uses the supplied
-  muddy side and farmland-top textures, farmland's one-pixel-short collision
-  shape, and vanilla mud sounds.
-- Supports vanilla Farmland moisture states and the
-  `minecraft:supports_crops` block tag. The block can be placed as farmland
-  only when its position is valid; if it loses support because of a solid
-  block above, it becomes regular mud rather than dirt.
-- Prevents player and mob trampling from turning the block into dirt. Normal
-  fall damage still applies. Empty fields do not turn into dirt just because
-  they have no crop; their vanilla-style moisture level can still decrease.
-- Crops extending Minecraft's `CropBlock` class can grow on the block without
-  light. Each crop random tick guarantees one age stage, then has an 80% chance
-  for each of up to four additional stages. Every stage that actually grows
-  costs 300 water units.
-- Each block stores up to 20,000 water units. A mature `CropBlock` consumes
-  one unit per game tick (0.005% of full capacity). When the reservoir reaches
-  zero, the block becomes vanilla Farmland and keeps its moisture state.
-- Muddy Farmland blocks connected face-to-face in any of the six directions
-  share a water network. If any block in the network detects water fluid in
-  the nearby search area (horizontal offsets -4 to +4, vertical offset 0 or
-  +1), the network is refilled to full capacity. Water changes and Muddy
-  Farmland changes invalidate the cached network so it can be recalculated.
-  The search checks loaded chunks only and does not force chunks to load.
-- Using a water potion on vanilla Farmland converts it to Muddy Farmland,
-  preserves the crop above and Farmland moisture, and returns a glass bottle.
-  Using a hoe on mud converts it to Muddy Farmland when the space above is
-  clear; the hoe takes one durability point.
-- Other mods can extend the conversion targets through the block tags
-  `muddy-farmland:water_bottle_convertible` and
-  `muddy-farmland:hoe_convertible`.
-- Includes block names for German, English, and additional languages.
+**Muddy Farmland** is a lightweight Fabric mod that introduces a nutrient-rich, water-storing farmland block crafted from mud. Turn muddy soil into fertile farmland, protect your crops from mob trampling, and supercharge your crop growth with automatic water-sharing networks and light-independent farming!
 
-### Modded crops
+<img src="https://cdn.phototourl.com/free/2026-07-23-94c1e1c4-28bd-428c-8eb0-8ca7edbe69cd.png" width="130px" alt="Features Section Header">
 
-The crop-support tag allows compatible mods to plant crops on Muddy Farmland.
-The special light-independent growth boost and water-per-growth-stage cost
-apply to crops that extend Minecraft's `CropBlock`; other crop implementations
-may use their own growth and light rules.
+* **No Trampling Damage:** Players and mobs can no longer turn your farmland into dirt by jumping on it.
+* **Light-Independent Turbo Growth:** Crops planted on Muddy Farmland grow even in pitch darkness with a massive random-tick boost.
+* **Shared Water Networks:** Adjacent Muddy Farmland blocks automatically connect into a network and refill themselves if any block is near water.
+* **Easy Conversion:** Simply use a water potion on regular Farmland or a hoe on Mud to create Muddy Farmland instantly.
+* **Highly Compatible:** Built with Datapack tags (`minecraft:supports_crops`), allowing crops from other mods to grow seamlessly.
 
-## Supported Minecraft versions
+<img src="https://cdn.phototourl.com/free/2026-07-23-0786ece7-1d2a-4270-b37e-47306c88e2f0.png" width="70px" alt="FAQ Section Header">
 
-The mod metadata allows Minecraft `26.1` through `26.2`, inclusive. The
-project's compatibility build matrix checks these Minecraft/Fabric API pairs:
+**Q: Do I need water right next to every single block?**  
+*A: No! Connected Muddy Farmland blocks share a single water network. As long as one block in the group finds water nearby, the entire field stays hydrated.*
 
-| Minecraft | Fabric API |
-| --- | --- |
-| 26.1 | `0.145.1+26.1` |
-| 26.1.1 | `0.145.4+26.1.1` |
-| 26.1.2 | `0.155.3+26.1.2` |
-| 26.2 | `0.161.0+26.2` |
+**Q: What happens when the block runs out of water?**  
+*A: When its internal reservoir hits zero, it safely converts back into regular vanilla Farmland while preserving the crop above.*
 
-Each matrix job compiles the mod against its matching Minecraft and Fabric API
-version. Use Fabric Loader `0.19.5` or newer and Java 25 or newer.
+**Q: Can I use this mod in my modpack?**  
+*A: Absolutely! The mod is licensed under CC BY 4.0, so you can freely include it in any modpack as long as you give proper credit.*
 
-## Build from source
+<img src="https://cdn.phototourl.com/free/2026-07-23-de1b7d28-0140-458e-ba20-508dc5ea0a1e.png" width="100px" alt="License Section Header">
 
-Clone the repository and run the Gradle wrapper:
+This project is licensed under the **CC-BY-4.0 license**. If you want to read the full legal details, click the button below:
 
-```shell
-./gradlew build
-```
-
-On Windows:
-
-```powershell
-.\gradlew.bat build
-```
-
-The current default build targets Minecraft 26.2. The distributable mod JAR
-is written to `dist/`; generated binaries are intentionally not committed.
-For a different compatibility-matrix entry, pass matching Gradle properties,
-for example:
-
-```shell
-./gradlew build -Pminecraft_version=26.1.2 -Pfabric_api_version=0.155.3+26.1.2
-```
-
-## Install
-
-Install Fabric Loader for a supported Minecraft version, place the built
-`muddy-farmland-1.0.0.jar` and a matching Fabric API JAR in that instance's
-`mods` folder, then launch the Fabric profile.
-
-## Source layout
-
-- `src/main/java/` — block registration, interactions, water storage/network,
-  and crop/network mixins.
-- `src/main/resources/assets/` — block/item models, blockstates, textures,
-  and translations.
-- `src/main/resources/data/` — crop support and conversion block tags.
-- `src/client/` — client entry point and client mixin configuration.
-- `.github/workflows/build.yml` — build checks for the supported version
-  matrix.
-
-## Lizenz / License
-
-This project is released under **CC0 1.0 Universal**; see [LICENSE](LICENSE).
-Contributions are understood to be offered under the same license.
-
-Dieses Projekt steht unter **CC0 1.0 Universal**. Die Lizenzbedingungen
-stehen in [LICENSE](LICENSE); Beiträge werden unter derselben Lizenz
-entgegengenommen.
+<div><a href="https://raw.githubusercontent.com/leopoldoronaldi/Muddy-Farmland/refs/heads/main/LICENSE" style="text-decoration:none" rel="nofollow"><img src="https://s1.directupload.eu/images/260723/bwrocayj.png" width="250px" alt="CC BY 4.0 License Button" style="display:inline-block;border:none"></a></div>
