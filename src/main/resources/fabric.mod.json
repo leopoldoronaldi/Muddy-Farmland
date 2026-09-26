@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "muddy-farmland",
+	"version": "1.0.0",
+	"name": "Muddy Farmland",
+	"description": "Turn muddy soil into rich, fertile farmland for faster and better crop growth!",
+	"authors": [
+		"leopoldoronaldi"
+	],
+	"contact": {
+		"homepage": "https://github.com/leopoldoronaldi/Muddy-Farmland",
+		"sources": "https://github.com/leopoldoronaldi/Muddy-Farmland"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/muddy-farmland/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.example.MuddyFarmland"
+		],
+		"client": [
+			"com.example.client.MuddyFarmlandClient"
+		]
+	},
+	"mixins": [
+		"muddy-farmland.mixins.json",
+		{
+			"config": "muddy-farmland.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": ">=26.1 <=26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
