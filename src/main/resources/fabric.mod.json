@@ -11,7 +11,7 @@
 		"homepage": "https://github.com/leopoldoronaldi/Muddy-Farmland",
 		"sources": "https://github.com/leopoldoronaldi/Muddy-Farmland"
 	},
-	"license": "CC0-1.0",
+	"license": "CC-BY-4.0",
 	"icon": "assets/muddy-farmland/icon.png",
 	"environment": "*",
 	"entrypoints": {
